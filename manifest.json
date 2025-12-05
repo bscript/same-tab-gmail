@@ -1,0 +1,31 @@
+{
+    "manifest_version": 3,
+    "name": "Gmail Same-Tab Switcher",
+    "description": "Force Gmail account switching to reuse the current tab instead of opening a new one.",
+    "version": "1.0",
+    "permissions": [
+        "tabs",
+        "scripting",
+        "webNavigation"
+    ],
+    "host_permissions": [
+        "https://mail.google.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://mail.google.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "action": {
+        "default_title": "Gmail Same-Tab Switcher"
+    }
+}
